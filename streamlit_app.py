@@ -17,16 +17,11 @@ st.markdown("""
         /* Move sidebar content to the very top */
         [data-testid="stSidebar"] {
             padding-top: 0px !important;
+            margin-top: -50px !important; /* Forces content up */
         }
         section[data-testid="stSidebar"] > div:first-child {
             padding-top: 0px !important;
-            margin-top: 0px !important;
-        }
-        /* Adjust heading font size */
-        h2 {
-            font-size: 20px !important;
-            font-weight: bold;
-            margin-bottom: 10px;
+            margin-top: -50px !important; /* Forces content up */
         }
     </style>
 """, unsafe_allow_html=True)
