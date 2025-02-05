@@ -16,11 +16,11 @@ st.markdown("""
     <style>
         /* Move sidebar content to the very top */
         [data-testid="stSidebar"] {
-            padding-top: -10px !important;
-            margin-top: -100px !important; /* Forces content up */
+            padding-top: 0px !important;
+            margin-top: -1000px !important; /* Forces content up */
         }
         section[data-testid="stSidebar"] > div:first-child {
-            padding-top: -10px !important;
+            padding-top: 0px !important;
             margin-top: -100px !important; /* Forces content up */
         }
     </style>
