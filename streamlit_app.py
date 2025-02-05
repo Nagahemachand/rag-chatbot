@@ -11,11 +11,31 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Apply CSS to remove sidebar padding and adjust heading sizes
+st.markdown("""
+    <style>
+        /* Move sidebar content to the very top */
+        [data-testid="stSidebar"] {
+            padding-top: 0px !important;
+        }
+        section[data-testid="stSidebar"] > div:first-child {
+            padding-top: 0px !important;
+            margin-top: 0px !important;
+        }
+        /* Adjust heading font size */
+        h2 {
+            font-size: 20px !important;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Load environment variables
 dotenv.load_dotenv()
 
 # Header with responsive styling
-st.markdown("<h1 style='text-align: center; font-size: 30px;'>🔍 <i>RAG Chatbot</i></h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; font-size: 24px;'>🔍 <i>RAG Chatbot</i></h1>", unsafe_allow_html=True)
 
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
@@ -45,22 +65,7 @@ else:
 sidebar, main_content = st.columns([1, 3])
 
 with sidebar:
-    st.markdown("""
-        <style>
-            /* Move sidebar content up */
-            section[data-testid="stSidebar"] > div:first-child {
-                padding-top: 0px;
-            }
-            /* Adjust heading font size */
-            h2 {
-                font-size: 20px !important;
-                font-weight: bold;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-    st.header("🔐 API Keys")
-
+    st.markdown("<h2>🔐 API Keys</h2>", unsafe_allow_html=True)
     if "AZ_OPENAI_API_KEY" not in os.environ:
         openai_api_key = st.text_input("Enter OpenAI API Key", type="password")
         anthropic_api_key = st.text_input("Enter Anthropic API Key", type="password")
@@ -70,26 +75,21 @@ with sidebar:
         az_openai_api_key = os.getenv("AZ_OPENAI_API_KEY")
         st.session_state.az_openai_api_key = az_openai_api_key
 
-    # Model Selection
-    st.header("🤖 Model Selection")
+    st.markdown("<h2>🤖 Model Selection</h2>", unsafe_allow_html=True)
     st.selectbox("Choose a Model", MODELS, key="model")
 
-    # RAG Mode Toggle inside Expander
     with st.expander("⚙️ Use RAG Mode", expanded=True):
         is_vector_db_loaded = "vector_db" in st.session_state and st.session_state.vector_db is not None
         st.toggle("Enable RAG", value=is_vector_db_loaded, key="use_rag", disabled=not is_vector_db_loaded)
 
     st.button("Clear Chat", on_click=lambda: st.session_state.messages.clear(), type="primary")
 
-    # File Upload for RAG
     with st.expander("📄 Upload RAG Documents", expanded=True):
         st.file_uploader("Upload a document", type=["pdf", "txt", "docx", "md"], accept_multiple_files=True, key="rag_docs")
 
-    # URL Input for RAG
     with st.expander("🌐 Add URL Source", expanded=True):
         st.text_input("Enter a URL", placeholder="https://example.com", key="rag_url")
 
-    # Display documents in DB
     with st.expander(f"📚 Documents in DB ({0 if not is_vector_db_loaded else len(st.session_state.rag_sources)})"):
         st.write([] if not is_vector_db_loaded else [source for source in st.session_state.rag_sources])
 
