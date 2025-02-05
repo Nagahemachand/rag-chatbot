@@ -25,6 +25,8 @@ dotenv.load_dotenv()
 if "AZ_OPENAI_API_KEY" not in os.environ:
     MODELS = [
         # "openai/o1-mini",
+        "openai/gpt-3.5-turbo",
+        "openai/gpt-4",
         "openai/gpt-4o",
         "openai/gpt-4o-mini",
         "anthropic/claude-3-5-sonnet-20240620",
@@ -33,16 +35,16 @@ else:
     MODELS = ["azure-openai/gpt-4o"]
 
 
-st.set_page_config(
-    page_title="RAG LLM app?", 
-    page_icon="📚", 
-    layout="centered", 
-    initial_sidebar_state="expanded"
-)
+# st.set_page_config(
+#     page_title="RAG LLM app?", 
+#     page_icon="📚", 
+#     layout="centered", 
+#     initial_sidebar_state="expanded"
+# )
 
 
 # --- Header ---
-st.html("""<h2 style="text-align: center;">📚🔍 <i> Do your LLM even RAG bro? </i> 🤖💬</h2>""")
+st.html("""<h1 style="text-align: center;">🔍 <i> RAG Chatbot </i> </h1>""")
 
 
 # --- Initial Setup ---
@@ -197,10 +199,10 @@ else:
                 st.write_stream(stream_llm_rag_response(llm_stream, messages))
 
 
-with st.sidebar:
-    st.divider()
-    st.video("https://youtu.be/abMwFViFFhI")
-    st.write("📋[Medium Blog](https://medium.com/@enricdomingo/program-a-rag-llm-chat-app-with-langchain-streamlit-o1-gtp-4o-and-claude-3-5-529f0f164a5e)")
-    st.write("📋[GitHub Repo](https://github.com/enricd/rag_llm_app)")
+# with st.sidebar:
+#     st.divider()
+#     st.video("https://youtu.be/abMwFViFFhI")
+#     st.write("📋[Medium Blog](https://medium.com/@enricdomingo/program-a-rag-llm-chat-app-with-langchain-streamlit-o1-gtp-4o-and-claude-3-5-529f0f164a5e)")
+#     st.write("📋[GitHub Repo](https://github.com/enricd/rag_llm_app)")
 
     
