@@ -21,7 +21,7 @@ st.markdown("""
         }
         section[data-testid="stSidebar"] > div:first-child {
             padding-top: 0px !important;
-            margin-top: -100px !important; /* Forces content up */
+            margin-top: -1000px !important; /* Forces content up */
         }
     </style>
 """, unsafe_allow_html=True)
