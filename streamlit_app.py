@@ -45,6 +45,20 @@ else:
 sidebar, main_content = st.columns([1, 3])
 
 with sidebar:
+    st.markdown("""
+        <style>
+            /* Move sidebar content up */
+            section[data-testid="stSidebar"] > div:first-child {
+                padding-top: 0px;
+            }
+            /* Adjust heading font size */
+            h2 {
+                font-size: 20px !important;
+                font-weight: bold;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.header("🔐 API Keys")
 
     if "AZ_OPENAI_API_KEY" not in os.environ:
