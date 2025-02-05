@@ -94,7 +94,7 @@ missing_openai = openai_api_key == "" or openai_api_key is None or "sk-" not in 
 missing_anthropic = anthropic_api_key == "" or anthropic_api_key is None
 if missing_openai and missing_anthropic and ("AZ_OPENAI_API_KEY" not in os.environ):
     st.write("#")
-    st.warning("⬅️ Please introduce an API Key to continue...")
+    st.warning("⬅️ Please choose a model of the left and enter your API Key to continue...")
 
 else:
     # Sidebar
