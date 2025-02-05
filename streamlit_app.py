@@ -14,14 +14,14 @@ st.set_page_config(
 # Apply CSS to remove sidebar padding and adjust heading sizes
 st.markdown("""
     <style>
-        /* Move sidebar content to the very top */
-        [data-testid="stSidebar"] {
+        /* Move sidebar content to the top */
+        [data-testid="stSidebarContent"] {
             padding-top: 0px !important;
-            margin-top: -1000px !important; /* Forces content up */
+            margin-top: -40px !important; /* Adjust this value if needed */
         }
+        /* Reduce default padding in sidebar */
         section[data-testid="stSidebar"] > div:first-child {
             padding-top: 0px !important;
-            margin-top: -1000px !important; /* Forces content up */
         }
     </style>
 """, unsafe_allow_html=True)
