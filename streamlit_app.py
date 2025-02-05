@@ -35,12 +35,12 @@ else:
     MODELS = ["azure-openai/gpt-4o"]
 
 
-# st.set_page_config(
-#     page_title="RAG LLM app?", 
-#     page_icon="📚", 
-#     layout="centered", 
-#     initial_sidebar_state="expanded"
-# )
+st.set_page_config(
+    page_title="RAG LLM app?", 
+    page_icon="📚", 
+    layout="wide", 
+    initial_sidebar_state="expanded"
+)
 
 
 # --- Header ---
