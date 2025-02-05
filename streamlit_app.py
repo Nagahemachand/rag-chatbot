@@ -73,13 +73,15 @@ with sidebar:
     st.markdown("<h2 style='text-align: left; font-size: 24px;'>🤖 Model Selection</h2>", unsafe_allow_html=True)
     st.selectbox("Choose a Model", MODELS, key="model")
 
-    with st.expander("⚙️ Use RAG Mode", expanded=True):
-        is_vector_db_loaded = "vector_db" in st.session_state and st.session_state.vector_db is not None
-        st.toggle("Enable RAG", value=is_vector_db_loaded, key="use_rag", disabled=not is_vector_db_loaded)
+    # with st.expander("⚙️ Use RAG Mode", expanded=True):
+    #     is_vector_db_loaded = "vector_db" in st.session_state and st.session_state.vector_db is not None
+    #     st.toggle("Enable RAG", value=is_vector_db_loaded, key="use_rag", disabled=not is_vector_db_loaded)
 
     st.button("Clear Chat", on_click=lambda: st.session_state.messages.clear(), type="primary")
 
     with st.expander("📄 Upload RAG Documents", expanded=True):
+        is_vector_db_loaded = "vector_db" in st.session_state and st.session_state.vector_db is not None
+        st.toggle("Enable RAG", value=is_vector_db_loaded, key="use_rag", disabled=not is_vector_db_loaded)
         st.file_uploader("Upload a document", type=["pdf", "txt", "docx", "md"], accept_multiple_files=True, key="rag_docs")
 
     with st.expander("🌐 Add URL Source", expanded=True):
