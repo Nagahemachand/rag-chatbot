@@ -15,7 +15,7 @@ st.set_page_config(
 dotenv.load_dotenv()
 
 # Header with responsive styling
-st.markdown("<h1 style='text-align: center; font-size: 24px;'>🔍 <i>RAG Chatbot</i></h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; font-size: 30px;'>🔍 <i>RAG Chatbot</i></h1>", unsafe_allow_html=True)
 
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
