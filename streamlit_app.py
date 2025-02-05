@@ -60,7 +60,7 @@ else:
 sidebar, main_content = st.columns([1, 3])
 
 with sidebar:
-    st.markdown("<h2>🔐 API Keys</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; font-size: 24px;'>🔐 API Keys</h2>", unsafe_allow_html=True)
     if "AZ_OPENAI_API_KEY" not in os.environ:
         openai_api_key = st.text_input("Enter OpenAI API Key", type="password")
         anthropic_api_key = st.text_input("Enter Anthropic API Key", type="password")
@@ -70,7 +70,7 @@ with sidebar:
         az_openai_api_key = os.getenv("AZ_OPENAI_API_KEY")
         st.session_state.az_openai_api_key = az_openai_api_key
 
-    st.markdown("<h2>🤖 Model Selection</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; font-size: 24px;'>🤖 Model Selection</h2>", unsafe_allow_html=True)
     st.selectbox("Choose a Model", MODELS, key="model")
 
     with st.expander("⚙️ Use RAG Mode", expanded=True):
