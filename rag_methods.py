@@ -7,7 +7,7 @@ from langchain_community.document_loaders.text import TextLoader
 from langchain_community.document_loaders import (
     WebBaseLoader, 
     PyPDFLoader, 
-    UnstructuredExcelLoader,
+    PandasExcelLoader,
     UnstructuredCSVLoader,
     Docx2txtLoader,
 )
@@ -54,8 +54,8 @@ def load_doc_to_db():
                             loader = PyPDFLoader(file_path)
                         elif doc_file.name.endswith(".docx"):
                             loader = Docx2txtLoader(file_path)
-                        elif doc_file.name.endswith(".xlsx"):
-                            loader = UnstructuredExcelLoader(file_path)
+                        elif doc_file.name.endswith(".xlsx") or doc_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+                            loader = PandasExcelLoader(file_path)
                         elif doc_file.name.endswith(".csv"):
                             loader = UnstructuredCSVLoader(file_path)
                         elif doc_file.type in ["text/plain", "text/markdown"]:
