@@ -7,6 +7,8 @@ from langchain_community.document_loaders.text import TextLoader
 from langchain_community.document_loaders import (
     WebBaseLoader, 
     PyPDFLoader, 
+    UnstructuredExcelLoader,
+    UnstructuredCSVLoader,
     Docx2txtLoader,
 )
 # pip install docx2txt, pypdf
@@ -52,6 +54,10 @@ def load_doc_to_db():
                             loader = PyPDFLoader(file_path)
                         elif doc_file.name.endswith(".docx"):
                             loader = Docx2txtLoader(file_path)
+                        elif doc_file.name.endswith(".xlsx"):
+                            loader = UnstructuredExcelLoader(file_path)
+                        elif doc_file.name.endswith(".csv"):
+                            loader = UnstructuredCSVLoader(file_path)
                         elif doc_file.type in ["text/plain", "text/markdown"]:
                             loader = TextLoader(file_path)
                         else:
