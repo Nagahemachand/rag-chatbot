@@ -134,8 +134,8 @@ def initialize_vector_db(docs):
 
 def _split_and_load_docs(docs):
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=5000,
-        chunk_overlap=1000,
+        chunk_size=1500,
+        chunk_overlap=200,
     )
 
     document_chunks = text_splitter.split_documents(docs)
