@@ -36,7 +36,7 @@ else:
 
 
 st.set_page_config(
-    page_title="RAG LLM app?", 
+    page_title="RAG LLM app", 
     page_icon="📚", 
     layout="wide", 
     initial_sidebar_state="expanded"
@@ -133,7 +133,7 @@ else:
         # File upload input for RAG with documents
         st.file_uploader(
             "📄 Upload a document", 
-            type=["pdf", "txt", "docx", "md"],
+            type=["pdf", "txt", "xlxs", "csv", "docx", "md"],
             accept_multiple_files=True,
             on_change=load_doc_to_db,
             key="rag_docs",
