@@ -59,8 +59,10 @@ def load_doc_to_db():
                             loader = UnstructuredExcelLoader(file_path)
                         elif doc_file.name.endswith(".csv"):
                             loader = UnstructuredCSVLoader(file_path)
-                        elif doc_file.name.endswith(".png") or doc_file.name.endswith(".jpg"):
+                        elif doc_file.name.endswith(".jpg"):
                             loader = UnstructuredImageLoader(file_path)
+                        # elif doc_file.name.endswith(".png"):
+                        #     loader = PNGLoader(file_path)
                         elif doc_file.type in ["text/plain", "text/markdown"]:
                             loader = TextLoader(file_path)
                         else:
