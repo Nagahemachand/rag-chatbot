@@ -113,6 +113,7 @@ def initialize_vector_db(docs):
             azure_endpoint=os.getenv("AZ_OPENAI_ENDPOINT"),
             model="text-embedding-3-large",
             openai_api_version="2024-02-15-preview",
+            max_tokens_per_chunk=500
         )
 
     vector_db = Chroma.from_documents(
